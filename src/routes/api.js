@@ -1,5 +1,10 @@
+const baseUrl =
+  // TODO: switch if using local
+  'https://secure-garden-32902.herokuapp.com';
+// 'http://localhost:5000';
+
 export const fetchJSON = async (filename) => {
-  const endpoint = `http://localhost:2000/data/${filename}`;
+  const endpoint = `${baseUrl}/data/${filename}`;
   const res = await fetch(endpoint);
   const { vectors } = await res.json();
   return vectors;
@@ -8,7 +13,7 @@ export const fetchJSON = async (filename) => {
 // OBJ sent (string)
 //     dataSet (string)
 export const isSentBelief = async (sent, dataSet) => {
-  const endpoint = `http://localhost:2000/nearest/sentence`;
+  const endpoint = `${baseUrl}/nearest/sentence`;
   const res = await fetch(endpoint, {
     method: 'POST',
     body: JSON.stringify({ sent, dataSet }),
@@ -20,7 +25,7 @@ export const isSentBelief = async (sent, dataSet) => {
 };
 
 export const getSentsFromUrl = async (url) => {
-  const endpoint = `http://localhost:2000/webpage/parse`;
+  const endpoint = `${baseUrl}/webpage/parse`;
   const res = await fetch(endpoint, {
     method: 'POST',
     body: JSON.stringify({ url }),
@@ -32,7 +37,7 @@ export const getSentsFromUrl = async (url) => {
 };
 
 export const saveSent = async (sent, belief) => {
-  const endpoint = `http://localhost:2000/data/belief`;
+  const endpoint = `${baseUrl}/data/belief`;
   const res = await fetch(endpoint, {
     method: 'POST',
     body: JSON.stringify({ sent, belief }),

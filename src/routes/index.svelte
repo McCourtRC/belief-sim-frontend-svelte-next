@@ -5,7 +5,6 @@
 	import { isSentBelief } from "./api";
 
 	let sentence;
-	$: console.log(sentence);
 	let isBelief = {};
 	const onclick = async () => {
 		const res = await isSentBelief(sentence, "wordvecs70000");
